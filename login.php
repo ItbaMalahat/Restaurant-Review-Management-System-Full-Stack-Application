@@ -1,0 +1,57 @@
+<?php
+session_start();
+
+// Check if the form has been submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    // Get form input values
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Connect to database
+    $servername = "localhost";
+    $dbusername = "root";
+    $dbpassword = "";
+    $dbname = "restaurant_review";
+
+    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Prepare SQL statement to select user with given username and password
+    $stmt = $conn->prepare("SELECT * FROM reviewer WHERE reviewer_username = ? AND reviewer_password = ?");
+    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Check if there is a user with given username and password
+    if ($result->num_rows == 1) {
+
+        $row = $result->fetch_assoc();
+
+        // Set session variable
+        $_SESSION['username'] = $row['reviewer_username'];
+        $_SESSION['role'] = 'user';
+
+        // Redirect to home page
+         header("Location: web.html");
+        // echo "login successful";
+        exit();
+
+    } else {
+
+        // Display error message
+        echo "Invalid username or password.";
+
+    }
+
+    // Close database connection
+    $stmt->close();
+    $conn->close();
+
+}
+
+?>

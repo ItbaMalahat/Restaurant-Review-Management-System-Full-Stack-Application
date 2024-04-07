@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+    <title>FoodMaster</title>
+
+    <!--CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            font-family: "Mitr", sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .signup {
+            background-color: rgba(0, 0, 0, 0.532);
+            width: 450px;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px #888888;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="submit"] {
+            margin-top: 5px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            color: black;
+        }
+
+        input[type="submit"] {
+            background-color: #ffffff00;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border: 1px solid white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="bgimg">
+        <nav>
+            <div class="logo" id="logo">
+                <span>FoodMaster
+            </div>
+            <ul>
+                <li><a href="web.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="browse.html">Browse</a></li>
+
+                <div class="buttons">
+                    <a class="button-1" href="login.html">Log in</a>
+                    <a class="button-2" href="signup.html">Sign Up</a>
+                </div>
+
+
+            </ul>
+        </nav>
+
+        <div class="signup">
+            <h1>Sign Up</h1>
+            <form action="signup.php" method="post">
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" name="firstname" required>
+
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" required>
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <input type="submit" value="Sign Up">
+            </form>
+            <?php include("signup.php"); ?>
+        </div>
+    </div>
+</body>
+
+</html>
